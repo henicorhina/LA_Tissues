@@ -10,7 +10,7 @@ Copyright Oscar Johnson 2016
 
 import matplotlib.pyplot as plt
 import numpy as np
-
+import matplotlib.cbook as cbook
 
 def listify(file):
     """
@@ -33,10 +33,30 @@ def array(my_list):
 
 
 def main():
+    fname = cbook.get_sample_data('/Users/home/LA_Tissues/LA_month_tissue_DB.csv', asfileobj=False)
     my_file = open('/Users/home/LA_Tissues/LA_month_tissue_DB.csv', 'r')
     lists = listify(my_file)
+    
+    l = []
+    for line in lists:
+        if line[0] == 'Dendroica_pinus':
+            l.append(line)
+            print(line)    
+    
+    
+    
     my_array = array(lists)
+    my_array.sort()
+    if str in my_array[:,0] == 'Dendroica_pinus':
+        print(str)
+        
+    for line in my_array:
+        if line[0]== 'Dendroica_pinus' or line[1] == 'Dendroica_pinus':
+            # print(my_array[:,0])
+            print(line)
+
     print(my_array[:,0])
+    
     for line in lists:
         print(line)
 
